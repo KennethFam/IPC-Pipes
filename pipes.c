@@ -33,7 +33,7 @@ int main() {
             return 1;
         }
         fprintf(stdout, "%s", read_msg);
-        sprintf(write_msg, "Daddy, my name is %d\n", getpid());
+        sprintf(write_msg, "Parent, my name is %d\n", getpid());
         if (write(pipefd_p[1], write_msg, BUFFER_SIZE) == -1) {
             fprintf(stderr, "Write to parent pipe failed! Error #%d: %s\n", errno, strerror(errno));
             return 1;
@@ -41,7 +41,7 @@ int main() {
         exit(0);
     }
     else {
-        sprintf(write_msg, "I am your daddy! and my name is %d\n", getpid());
+        sprintf(write_msg, "I am your parent! and my name is %d\n", getpid());
         if (write(pipefd_c[1], write_msg, BUFFER_SIZE) == -1) {
             fprintf(stderr, "Write to child pipe failed! Error #%d: %s\n", errno, strerror(errno));
             return 1;
